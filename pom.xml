@@ -23,6 +23,7 @@
         <module>springcloud-sample-api</module>
         <module>springcloud-sample-eureka</module>
         <module>springcloud-sample-product</module>
+        <module>springcloud-sample-app</module>
     </modules>
 
     <dependencyManagement>
