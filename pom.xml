@@ -17,6 +17,7 @@
         <log4j.version>1.2.17</log4j.version>
         <lombok.version>1.16.18</lombok.version>
         <springcloud.version>Finchley.SR2</springcloud.version>
+        <druid.version>1.1.13</druid.version>
     </properties>
 
     <modules>
@@ -51,10 +52,11 @@
                 <version>5.1.35</version>
             </dependency>
 
+            <!--阿里数据库连接池 -->
             <dependency>
                 <groupId>com.alibaba</groupId>
-                <artifactId>druid</artifactId>
-                <version>1.0.23</version>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
             </dependency>
 
             <dependency>
