@@ -63,6 +63,11 @@ spring:
                   wall:
                       config:
                           multi-statement-allow: true
+  # ehcache
+  cache:
+    ehcache:
+      enabled: true
+      config: classpath:ehcache.xml
 
 eureka:
   client:

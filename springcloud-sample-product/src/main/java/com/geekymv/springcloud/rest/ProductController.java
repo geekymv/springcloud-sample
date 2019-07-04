@@ -17,7 +17,7 @@ public class ProductController {
     @GetMapping("/productDetail/{id1}")
     public Product productDetail(@PathVariable("id1") Long id) {
         ExecutorService executorService = Executors.newCachedThreadPool();
-        for(int i = 0; i < 10000; i++) {
+        for(int i = 0; i < 10; i++) {
             int temp = i;
             executorService.execute(()-> {
                 Product product = productService.findProductById(id);
