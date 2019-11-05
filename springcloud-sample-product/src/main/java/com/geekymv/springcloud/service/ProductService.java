@@ -44,7 +44,7 @@ public class ProductService implements ProductApi {
         Product product = productMapper.findProductById(productId);
         ProductDetailResponse response = new ProductDetailResponse();
         if(product == null) {
-            throw new ServiceException("产品不存在");
+            throw new ServiceException(productId + "产品不存在");
         }
         response.setProduct(product);
         return response;
