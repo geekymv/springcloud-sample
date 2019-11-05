@@ -3,10 +3,11 @@ package com.geekymv.springcloud.rest;
 import com.geekymv.springcloud.model.Product;
 import com.geekymv.springcloud.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ProductController {
@@ -16,21 +17,12 @@ public class ProductController {
 
     @GetMapping("/productDetail/{id1}")
     public Product productDetail(@PathVariable("id1") Long id) {
-        ExecutorService executorService = Executors.newCachedThreadPool();
-        for(int i = 0; i < 10; i++) {
-            int temp = i;
-            executorService.execute(()-> {
-                Product product = productService.findProductById(id);
-                System.out.println("productName = " + product.getProductName() + ", i = " + temp);
-            });
-        }
-        return null;
+        return productService.findProductById(id);
     }
 
     @PostMapping(value = "/addProduct")
     public Product addProduct(@RequestBody Product product) {
-        System.out.println(product);
-        return product;
+        return productService.saveProduct2LocalCache(product);
     }
 
 }
