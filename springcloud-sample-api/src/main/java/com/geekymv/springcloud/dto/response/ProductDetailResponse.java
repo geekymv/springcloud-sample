@@ -1,22 +1,21 @@
-package com.geekymv.springcloud.model;
+package com.geekymv.springcloud.dto.response;
 
+import com.geekymv.common.BaseResponse;
+import com.geekymv.springcloud.model.Product;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
-import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Accessors(chain = true)
 @Data
 @Builder
-public class Product implements Serializable {
+public class ProductDetailResponse extends BaseResponse {
 
-    private Long productId;
-
-    private String productName;
+    private Product product;
 
 }

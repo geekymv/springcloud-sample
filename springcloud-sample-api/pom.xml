@@ -13,8 +13,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <groupId>com.geekymv.springcloud</groupId>
+            <artifactId>springcloud-sample-common</artifactId>
+            <version>1.0</version>
         </dependency>
 
         <dependency>

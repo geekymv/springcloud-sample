@@ -28,6 +28,7 @@
         <module>springcloud-sample-product</module>
         <module>springcloud-sample-app</module>
         <module>springcloud-sample-gateway</module>
+        <module>springcloud-sample-common</module>
     </modules>
 
     <dependencyManagement>
