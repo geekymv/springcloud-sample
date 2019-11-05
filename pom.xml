@@ -27,6 +27,7 @@
         <module>springcloud-sample-eureka</module>
         <module>springcloud-sample-product</module>
         <module>springcloud-sample-app</module>
+        <module>springcloud-sample-gateway</module>
     </modules>
 
     <dependencyManagement>

@@ -1,0 +1,22 @@
+server:
+  port: 8091
+
+spring:
+  application:
+    name: gateway-service
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    instanceId: ${spring.application.name}:${server.port}
+    prefer-ip-address: true
+
+
+zuul:
+  retryable: true
+  ignoredServices: '*'
+  routes:
+    app-rest:
+      path: /app/**
