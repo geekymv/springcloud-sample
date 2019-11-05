@@ -1,6 +1,6 @@
 package com.geekymv.springcloud.api;
 
-import com.geekymv.common.BaseResponse;
+import com.geekymv.common.api.BaseResponse;
 import com.geekymv.springcloud.dto.response.ProductDetailResponse;
 import com.geekymv.springcloud.model.Product;
 import org.springframework.cloud.openfeign.FeignClient;

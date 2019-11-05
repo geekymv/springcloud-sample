@@ -1,6 +1,7 @@
 package com.geekymv.springcloud.service;
 
-import com.geekymv.common.BaseResponse;
+import com.geekymv.common.api.BaseResponse;
+import com.geekymv.common.exception.ServiceException;
 import com.geekymv.springcloud.api.ProductApi;
 import com.geekymv.springcloud.dto.response.ProductDetailResponse;
 import com.geekymv.springcloud.mapper.ProductMapper;
@@ -42,6 +43,9 @@ public class ProductService implements ProductApi {
         log.info("productDetail productId = {}", productId);
         Product product = productMapper.findProductById(productId);
         ProductDetailResponse response = new ProductDetailResponse();
+        if(product == null) {
+            throw new ServiceException("产品不存在");
+        }
         response.setProduct(product);
         return response;
     }
