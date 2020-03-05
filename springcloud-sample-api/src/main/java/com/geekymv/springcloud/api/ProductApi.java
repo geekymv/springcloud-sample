@@ -1,7 +1,6 @@
 package com.geekymv.springcloud.api;
 
-import com.geekymv.common.api.BaseResponse;
-import com.geekymv.springcloud.dto.response.ProductDetailResponse;
+import com.geekymv.common.api.CommonResult;
 import com.geekymv.springcloud.model.Product;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface ProductApi {
 
     @PostMapping("/create")
-    BaseResponse createProduct(@RequestBody Product product);
+    CommonResult<Product> createProduct(@RequestBody Product product);
 
     @GetMapping(path = "/detail/{productId}")
-    ProductDetailResponse productDetail(@PathVariable("productId") Long productId);
+    CommonResult<Product> productDetail(@PathVariable("productId") Long productId);
 }

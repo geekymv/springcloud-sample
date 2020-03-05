@@ -1,20 +1,12 @@
 package com.geekymv.springcloud.aop;
 
-import com.geekymv.common.api.BaseResponse;
+import com.geekymv.common.api.CommonResult;
 import com.geekymv.common.api.ResultCode;
 import com.geekymv.common.exception.ServiceException;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.web.HttpMediaTypeNotSupportedException;
-import org.springframework.web.HttpRequestMethodNotSupportedException;
-import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
 
 @Slf4j
 @RestControllerAdvice
@@ -82,12 +74,12 @@ public class GlobalExceptionTranslator {
 //    }
 
     @ExceptionHandler(NoHandlerFoundException.class)
-    public BaseResponse handleError(NoHandlerFoundException e) {
+    public CommonResult handleError(NoHandlerFoundException e) {
         log.error("404 Not Found", e);
-        return BaseResponse
+        return CommonResult
                 .builder()
                 .code(ResultCode.NOT_FOUND.getCode())
-                .message(e.getMessage())
+                .msg(e.getMessage())
                 .build();
     }
 
@@ -122,12 +114,12 @@ public class GlobalExceptionTranslator {
 //    }
 
     @ExceptionHandler(ServiceException.class)
-    public BaseResponse handleError(ServiceException e) {
+    public CommonResult handleError(ServiceException e) {
         log.error("Service Exception", e);
-        return BaseResponse
+        return CommonResult
                 .builder()
                 .code(e.getResultCode().getCode())
-                .message(e.getMessage())
+                .msg(e.getMessage())
                 .build();
     }
 
@@ -142,12 +134,12 @@ public class GlobalExceptionTranslator {
 //    }
 
     @ExceptionHandler(Throwable.class)
-    public BaseResponse handleError(Throwable e) {
+    public CommonResult handleError(Throwable e) {
         log.error("Internal Server Error", e);
-        return BaseResponse
+        return CommonResult
                 .builder()
                 .code(ResultCode.INTERNAL_SERVER_ERROR.getCode())
-                .message(e.getMessage())
+                .msg(e.getMessage())
                 .build();
     }
 
