@@ -34,3 +34,13 @@ eureka:
   instance:
     instanceId: ${spring.application.name}:${server.port}
     prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
+
+management:
+  endpoint:
+    health:
+      show-details: always
+
+info:
+  appName: ${spring.application.name}

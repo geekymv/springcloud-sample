@@ -1,7 +1,12 @@
 spring:
   application:
     name: eureka-server
+  profiles:
+    active: local
 
+---
+spring:
+  profiles: local
 server:
   port: 8761
 
@@ -13,6 +18,9 @@ eureka:
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 2000
 
 ---
 spring:
