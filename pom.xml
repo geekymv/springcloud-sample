@@ -32,6 +32,8 @@
         <module>springcloud-sample-app</module>
         <module>springcloud-sample-gateway</module>
         <module>springcloud-sample-common</module>
+        <module>springcloud-sample-zookeeper</module>
+        <module>springcloud-sample-app-zk</module>
     </modules>
 
     <dependencyManagement>
