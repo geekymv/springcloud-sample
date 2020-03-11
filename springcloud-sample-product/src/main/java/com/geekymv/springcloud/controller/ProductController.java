@@ -1,7 +1,6 @@
 package com.geekymv.springcloud.controller;
 
 import com.geekymv.common.model.Result;
-import com.geekymv.springcloud.api.ProductApi;
 import com.geekymv.springcloud.model.Product;
 import com.geekymv.springcloud.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequestMapping("/product")
-public class ProductController implements ProductApi {
+public class ProductController {
 
     @Autowired
     private ProductService productService;
@@ -28,9 +27,9 @@ public class ProductController implements ProductApi {
     }
 
     @GetMapping("/detail/{productId}")
-    public Result<Product> productDetail(@PathVariable Long productId) {
+    public Product productDetail(@PathVariable Long productId) {
         log.info("productDetail productId = {}", productId);
         Product product = productService.findProductById(productId);
-        return new Result<Product>(200, "请求成功",product);
+        return product;
     }
 }

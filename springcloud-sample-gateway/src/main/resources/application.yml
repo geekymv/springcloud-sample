@@ -15,7 +15,7 @@ eureka:
 
 
 zuul:
-  prefix: /sample
+  prefix: /api
   retryable: true
   ignoredServices: '*'
   routes:
