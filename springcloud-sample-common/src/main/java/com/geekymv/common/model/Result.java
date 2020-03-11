@@ -1,4 +1,4 @@
-package com.geekymv.common.api;
+package com.geekymv.common.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,23 +8,23 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 @AllArgsConstructor
-public class CommonResult<T> {
+public class Result<T> {
 
     private Integer code;
     private String msg;
     private T data;
 
-    public CommonResult() {
-        msg = ResultCode.SUCCESS.getMessage();
+    public Result() {
+        msg = ResultCode.SUCCESS.getMsg();
         code = ResultCode.SUCCESS.getCode();
     }
 
-    public CommonResult(ResultCode rc) {
-        msg = rc.getMessage();
+    public Result(ResultCode rc) {
+        msg = rc.getMsg();
         code = rc.getCode();
     }
 
-    public CommonResult(Integer code, String msg) {
+    public Result(Integer code, String msg) {
         this(code, msg, null);
     }
 

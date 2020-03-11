@@ -37,6 +37,11 @@ eureka:
     lease-renewal-interval-in-seconds: 1
     lease-expiration-duration-in-seconds: 2
 
+ribbon:
+  ConnectTimeout: 6000
+  ReadTimeout: 6000
+
+
 management:
   endpoint:
     health:

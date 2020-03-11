@@ -1,7 +1,7 @@
 package com.geekymv.springcloud.controller;
 
+import com.geekymv.common.model.Result;
 import com.geekymv.springcloud.api.ProductApi;
-import com.geekymv.common.api.CommonResult;
 import com.geekymv.springcloud.model.Product;
 import com.geekymv.springcloud.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
@@ -22,15 +22,15 @@ public class ProductController implements ProductApi {
     private ProductService productService;
 
     @PostMapping("/create")
-    public CommonResult createProduct(@RequestBody Product product) {
+    public Result createProduct(@RequestBody Product product) {
 
         return null;
     }
 
     @GetMapping("/detail/{productId}")
-    public CommonResult<Product> productDetail(@PathVariable Long productId) {
+    public Result<Product> productDetail(@PathVariable Long productId) {
         log.info("productDetail productId = {}", productId);
         Product product = productService.findProductById(productId);
-        return new CommonResult<Product>(200, "请求成功",product);
+        return new Result<Product>(200, "请求成功",product);
     }
 }

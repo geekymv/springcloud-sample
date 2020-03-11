@@ -15,8 +15,18 @@ eureka:
 
 
 zuul:
+  prefix: /sample
   retryable: true
   ignoredServices: '*'
   routes:
-    app-rest:
+    app:
       path: /app/**
+      service-id: app-rest
+      strip-prefix: false
+  host:
+    connect-timeout-millis: 15000
+    socket-timeout-millis: 60000
+
+ribbon:
+  ConnectTimeout: 6000
+  ReadTimeout: 6000

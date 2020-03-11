@@ -1,6 +1,6 @@
 package com.geekymv.springcloud.aop;
 
-import com.geekymv.common.api.CommonResult;
+import com.geekymv.common.model.Result;
 import com.geekymv.common.api.ResultCode;
 import com.geekymv.common.exception.ServiceException;
 import lombok.extern.slf4j.Slf4j;
@@ -74,9 +74,9 @@ public class GlobalExceptionTranslator {
 //    }
 
     @ExceptionHandler(NoHandlerFoundException.class)
-    public CommonResult handleError(NoHandlerFoundException e) {
+    public Result handleError(NoHandlerFoundException e) {
         log.error("404 Not Found", e);
-        return CommonResult
+        return Result
                 .builder()
                 .code(ResultCode.NOT_FOUND.getCode())
                 .msg(e.getMessage())
@@ -114,9 +114,9 @@ public class GlobalExceptionTranslator {
 //    }
 
     @ExceptionHandler(ServiceException.class)
-    public CommonResult handleError(ServiceException e) {
+    public Result handleError(ServiceException e) {
         log.error("Service Exception", e);
-        return CommonResult
+        return Result
                 .builder()
                 .code(e.getResultCode().getCode())
                 .msg(e.getMessage())
@@ -134,9 +134,9 @@ public class GlobalExceptionTranslator {
 //    }
 
     @ExceptionHandler(Throwable.class)
-    public CommonResult handleError(Throwable e) {
+    public Result handleError(Throwable e) {
         log.error("Internal Server Error", e);
-        return CommonResult
+        return Result
                 .builder()
                 .code(ResultCode.INTERNAL_SERVER_ERROR.getCode())
                 .msg(e.getMessage())
