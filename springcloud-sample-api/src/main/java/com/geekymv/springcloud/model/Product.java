@@ -19,4 +19,6 @@ public class Product implements Serializable {
 
     private String productName;
 
+    private int inventoryCnt;
+
 }

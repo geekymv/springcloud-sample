@@ -1,34 +1,43 @@
 package com.geekymv.common.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Builder
+import java.io.Serializable;
+
+
 @Data
-@AllArgsConstructor
-public class Result<T> {
+public class Result<T> implements Serializable {
 
-    private Integer code;
+    private int code;
     private String msg;
     private T data;
 
     public Result() {
-        msg = ResultCode.SUCCESS.getMsg();
-        code = ResultCode.SUCCESS.getCode();
     }
 
-    public Result(ResultCode rc) {
-        msg = rc.getMsg();
-        code = rc.getCode();
+    public Result(T data) {
+        this(ResultCode.SUCCESS,  data);
     }
 
-    public Result(Integer code, String msg) {
-        this(code, msg, null);
+    public Result(ResultCode resultCode, T data) {
+        this.code = resultCode.getCode();
+        this.msg = resultCode.getMsg();
+        this.data = data;
     }
 
-    public boolean isSuccess() {
+    public static <T> Result<T> success(T data) {
+        return new Result(ResultCode.SUCCESS, data);
+    }
+
+    public static <T> Result<T> fail(ResultCode resultCode, T data) {
+        return new Result(resultCode, data);
+    }
+
+    public static <T> Result<T> fail(ResultCode resultCode) {
+        return new Result(resultCode, null);
+    }
+
+    public boolean success() {
         return code == ResultCode.SUCCESS.getCode();
     }
 }

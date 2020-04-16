@@ -3,7 +3,7 @@
 <mapper namespace="com.geekymv.springcloud.mapper.ProductMapper">
 
     <sql id="Base_Column_List" >
-        product_id, product_name
+        product_id, product_name, inventory_cnt
     </sql>
 
 
@@ -11,7 +11,10 @@
         select
         <include refid="Base_Column_List"/>
         from product t where t.product_id = #{productId}
-
     </select>
+
+    <update id="updateProductInventoryCnt">
+        update product set inventory_cnt = #{inventoryCnt} where product_id = #{productId}
+    </update>
 
 </mapper>
