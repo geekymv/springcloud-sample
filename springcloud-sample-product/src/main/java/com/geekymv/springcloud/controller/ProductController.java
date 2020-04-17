@@ -41,7 +41,7 @@ public class ProductController {
         Product product = null;
 
         long startTime = System.currentTimeMillis();
-        long waitTime = 10000; // 1s
+        long waitTime = 1000; // 1s
 
         // 是否需要发起加载产品库存缓存的任务
         boolean productCacheRefresh = true;
