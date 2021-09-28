@@ -34,6 +34,8 @@
         <module>springcloud-sample-common</module>
         <module>springcloud-sample-zookeeper</module>
         <module>springcloud-sample-app-zk</module>
+        <module>springcloud-sample-order</module>
+        <module>springcloud-sample-mng</module>
     </modules>
 
     <dependencyManagement>
